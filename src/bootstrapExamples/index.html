@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-slace=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Treneriai</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item "><a class="nav-link" href="./index.html"><span class="fa fa-home fa-lg"></span>
+                            Pradinis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-info fa-lg"></span>
+                            Apie mus</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-list fa-lg"></span>
+                            Treneriai</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./contactus.html"><span
+                                class="fa fa-address-card fa-lg"></span> Kontaktai</a></li>
+                </ul>
+            </div>
+            <span class="navbar-text">
+                <a style="padding-left:10px;" data-toggle="modal" data-target="#registerAdModal">
+                    <span class="fa fa-pencil"></span>Registruoti skelbimą</a>
+            </span>
+            <span class="navbar-text">
+                <a style="padding-left:10px;" data-toggle="modal" data-target="#PLACEHOLDER">
+                    <span class="fa fa-user"></span> Jakobas</a>
+            </span>
+            <span class="navbar-text">
+                <a style="padding-left:10px;" data-toggle="modal" data-target="#PLACEHOLDER">
+                    <span class="fa fa-sign-out"></span> Atsijungti</a>
+            </span>
+        </div>
+    </nav>
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Prisijungimas </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <label class="sr-only" for="exampleInputEmail3">El. paštas</label>
+                                <input type="email" class="form-control form-control-sm mr-1" id="exampleInputEmail3"
+                                    placeholder="El. paštas">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label class="sr-only" for="exampleInputPassword3">Slaptažodis</label>
+                                <input type="password" class="form-control form-control-sm mr-1"
+                                    id="exampleInputPassword3" placeholder="Slaptažodis">
+                            </div>
+                            <div class="col-sm-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label"> Prisiminti manę
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <button type="button" class="btn btn-secondary btn-sm ml-auto"
+                                data-dismiss="modal">Atšaukti</button>
+                            <button type="submit" class="btn btn-primary btn-sm ml-1">Prisijungti</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="registrationModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Registracija </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group required col-sm-8">
+                                <label class="control-label" for="email">El. paštas</label>
+                                <input type="email" class="form-control form-control-sm mr-1" id="email"
+                                    placeholder="El. paštas" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group required col-sm-8">
+                                <label class="control-label" for="emailConfirm">Pakartokite el. paštą</label>
+                                <input type="email" class="form-control form-control-sm mr-1" id="emailConfirm"
+                                    placeholder="El. paštas" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group required col-sm-8">
+                                <label class="control-label" for="password">Slaptažodis</label>
+                                <input type="password" class="form-control form-control-sm mr-1" id="password"
+                                    placeholder="Slaptažodis" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group required col-sm-8">
+                                <label class="control-label" for="passwordConfirm">Pakartokite slaptažodį</label>
+                                <input type="password" class="form-control form-control-sm mr-1" id="passwordConfirm"
+                                    placeholder="Slaptažodis" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-8">
+                                <label for="telNum">Telefono numeris</label>
+                                <input type="tel" class="form-control form-control-sm mr-1" id="telNum"
+                                    placeholder="Telefono numeris">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <button type="button" class="btn btn-secondary btn-sm ml-auto"
+                                data-dismiss="modal">Atšaukti</button>
+                            <button type="submit" class="btn btn-primary btn-sm ml-1">Registruotis</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="registerAdModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Skelbimo registraciją </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group required col-sm-12">
+                                <label class="control-label" for="Photo">Nuotrauka</label>
+                                <button>Įkelti nuotrauką</button>
+                                <div class="col-12 col-md-6 align-items-center">
+                                    <img class="img-fluid img-thumbnail" src="img/trainerJakob.png" alt="Jacob">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group required col-sm-12">
+                                <label class="control-label" for="specialization">Specializacija</label>
+                                <div class="form-group row">
+                                    <div class="col-6 col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="strengthCheckbox" value="jega">
+                                            <label class="form-check-label" for="strengthCheckbox">Jėga</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input checked class="form-check-input" type="checkbox" id="enduranceCheckbox" value="istverme">
+                                            <label class="form-check-label" for="enduranceCheckbox">Ištvermė</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input checked class="form-check-input" type="checkbox" id="hiitCheckbox" value="hiit">
+                                            <label class="form-check-label" for="hiitCheckbox">H.I.I.T. </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="crossfitCheckbox" value="crossfit">
+                                            <label class="form-check-label" for="crossfitCheckbox">Crossfit </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="reabilitacijaCheckbox"
+                                                value="reabilitacija">
+                                            <label class="form-check-label" for="reabilitacijaCheckbox">Reabilitacija</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input checked class="form-check-input" type="checkbox" id="svoriometimasCheckbox"
+                                                value="svoriometimas">
+                                            <label class="form-check-label" for="svoriometimasCheckbox">Svorio metimas</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="svoriopriaugimasCheckbox"
+                                                value="svoriopriaugimas">
+                                            <label class="form-check-label" for="svoriopriaugimasCheckbox">Svorio priaugimas</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="kunoskulpturaCheckbox"
+                                                value="kunoskulptura">
+                                            <label class="form-check-label" for="kunoskulpturaCheckbox">Kūno skulptūra</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group required col-sm-12">
+                                <label class="control-label" for="competence">Aprašymas</label>
+                                <textarea class="form-control" id="competence" name="competence" rows="6">Treniruotės pradedantiesiems, Mažų grupių treniruotės (3-5 klientai), Kineziterapija (kineziterapeuto konsultacijos), Svorio mažinimas, Svorio auginimas, Fitnesas ir kultūrizmas, Laikysenos korekcija, Funkcinės treniruotės, Bendro fizinio rengimo treniruotės (darbas su atletais)</textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group required col-sm-12">
+                                <label class="control-label" for="workExperience">Darbo patirtis</label>
+                                <textarea class="form-control" id="workExperience" name="workExperience" rows="3">Nuo 2014 metų</textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group required col-sm-12">
+                                <label class="control-label" for="achievements">Sportiniai pasiekimai ir laimėjimai</label>
+                                <textarea class="form-control" id="achievements" name="achievements" rows="6">Daugkartinis Lietuvos rankų lenkimo čempionas iki 18 m. , iki 21 m. , suaugusiųjų čempionas ir prizininkas. Įvairių tarptautinių turnyrų dalyvis ir prizininkas. Lietuvos jaunių kultūrizmo čempionas NAC federacija.</textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group required col-sm-8">
+                                <label class="control-label" for="telNum">Telefono numeris</label>
+                                <input type="tel" class="form-control form-control-sm mr-1" id="telNum"
+                                    placeholder="Telefono numeris" value="+37086425354">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-8">
+                                <label for="facebookLink">Facebook paskyra</label>
+                                <input type="link" class="form-control form-control-sm mr-1" id="facebookLink"
+                                    placeholder="Facebook paskryos nuoroda" value="http://www.facebook.com/profile.php?id=">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-8">
+                                <label for="linkedinLink">Linkedin paskyra</label>
+                                <input type="link" class="form-control form-control-sm mr-1" id="linkedinLink"
+                                    placeholder="Linkedin paskyros nuoroda" value="http://www.linkedin.com/in/">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-8">
+                                <label for="instagramLink">Instagram paskyra</label>
+                                <input type="link" class="form-control form-control-sm mr-1" id="instagramLink"
+                                    placeholder="Instagram paskyros nuoroda" value="http://instagram.com/">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-8">
+                                <label for="email">El. paštas</label>
+                                <input type="email" class="form-control form-control-sm mr-1" id="email"
+                                    placeholder="Eletroninio pašto adresas">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <button type="button" class="btn btn-secondary btn-sm ml-auto"
+                                data-dismiss="modal">Atšaukti</button>
+                                <a class="button-link" href= "./trainerPage.html">Registruoti skelbimą</a>
+                                <!-- <a href="./trainerPage.html"><button type="submit" class="btn btn-primary btn-sm ml-1"> Registruoti skelbimą</button></a> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12 col-sm-8">
+                    <h1>Trenerių paieškos sistema</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class=row>
+            <div class="col-12">
+                <form class="form-style">
+                    <div class="form-group row">
+                        <div class="col-10">
+                            <input type="text" class="form-control" id="searchInput" name="searchInput"
+                                placeholder="Įveskite paieškos parametrus">
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="fa fa-search fa-lg"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-6 col-sm-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="strengthCheckbox" value="jega">
+                                <label class="form-check-label" for="strengthCheckbox">Jėga</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="enduranceCheckbox" value="istverme">
+                                <label class="form-check-label" for="enduranceCheckbox">Ištvermė</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="hiitCheckbox" value="hiit">
+                                <label class="form-check-label" for="hiitCheckbox">H.I.I.T. </label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="crossfitCheckbox" value="crossfit">
+                                <label class="form-check-label" for="crossfitCheckbox">Crossfit </label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="reabilitacijaCheckbox"
+                                    value="reabilitacija">
+                                <label class="form-check-label" for="reabilitacijaCheckbox">Reabilitacija</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="svoriometimasCheckbox"
+                                    value="svoriometimas">
+                                <label class="form-check-label" for="svoriometimasCheckbox">Svorio metimas</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="svoriopriaugimasCheckbox"
+                                    value="svoriopriaugimas">
+                                <label class="form-check-label" for="svoriopriaugimasCheckbox">Svorio priaugimas</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="kunoskulpturaCheckbox"
+                                    value="kunoskulptura">
+                                <label class="form-check-label" for="kunoskulpturaCheckbox">Kūno skulptūra</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <h3 style="padding-top: 15px">Treneriai</h3>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="media border p-3">
+                <img class="d-block mr-3 img-thumbnail img-fluid img-fit" src="img/profile_picture_female.jpg"
+                    alt="profile picture">
+                <div class="media-body">
+                    <h2 class="mt-0">Asta Astaitė</h2>
+                    <div class="d-none d-sm-block">
+                        <span class="badge badge-info">Reabilitacija</span>
+                    </div>
+                    <p class="d-none d-sm-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit
+                        anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="media border p-3">
+                <img class="d-block mr-3 img-thumbnail img-fluid img-fit" src="img/profile_picture.jpg"
+                    alt="profile picture">
+                <div class="media-body">
+                    <h2 class="mt-0">Petras Petraitis</h2>
+                    <div class="d-none d-sm-block">
+                        <span class="badge badge-info">H.I.I.T.</span>
+                        <span class="badge badge-info">Jėga</span>
+                        <span class="badge badge-info">Svorio priaugimas</span>
+                    </div>
+                    <p class="d-none d-sm-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit
+                        anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" style="margin-top:20px">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 offset-1 col-sm-2">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="./index.html">Pradinis</a></li>
+                        <li><a href="#">Apie mus</a></li>
+                        <li><a href="#">Treneriai</a></li>
+                        <li><a href="#">Kontaktai</a></li>
+                    </ul>
+                </div>
+                <div class="col-7 col-sm-5">
+                    <h5>Kontaktai:</h5>
+                    <address>
+                        <i class="fa fa-phone fa-lg"></i>: +3706254658<br>
+                        <i class="fa fa-fax fa-lg"></i>: +3706354235<br>
+                        <i class="fa fa-envelope fa-lg"></i>: <a href="mailto:treneriai@tps.net">treneriai@tps.net</a>
+                    </address>
+                </div>
+                <div class="col-12 col-sm-4 align-self-center">
+                    <div class="text-center">
+                        <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i
+                                class="fa fa-google-plus fa-lg"></i></a>
+                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i
+                                class="fa fa-facebook fa-lg"></i></a>
+                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i
+                                class="fa fa-linkedin fa-lg"></i></a>
+                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i
+                                class="fa fa-twitter fa-lg"></i></a>
+                        <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i
+                                class="fa fa-youtube fa-lg"></i></a>
+                        <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <p>© Copyright 2021 TPS</p>
+                </div>
+            </div>
+        </div>
+        <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+        <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    </footer>
+
+</body>
+
+</html>
