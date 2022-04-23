@@ -24,7 +24,7 @@ function RenderMenuItem({ dish, onClick }) {
                         </div>
                         <div className="col-9">
                             <Media body>
-                                <Media heading>{dish.name}</Media>
+                                <Media heading>{dish.name} {dish.lastName}</Media>
                                 <div className="d-none d-sm-block">
                                     <span className="badge badge-info">{dish.label}</span>
                                 </div>

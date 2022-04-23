@@ -26,8 +26,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
 
   postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
-  postDish: (name, image, imagebig, tel, label, work, achievement, featured, description) => dispatch(postDish(name, image, imagebig, tel, label, work, achievement, featured, description)),
-  putDish: (dishid, name, image, imagebig, tel, label, work, achievement, featured, description) => dispatch(putDish(dishid, name, image, imagebig, tel, label, work, achievement, featured, description)),
+  postDish: (name, lastName, image, imagebig, tel, label, work, achievement, featured, description) => dispatch(postDish(name, lastName, image, imagebig, tel, label, work, achievement, featured, description)),
+  putDish: (dishid, name, lastName, image, imagebig, tel, label, work, achievement, featured, description) => dispatch(putDish(dishid, name, lastName, image, imagebig, tel, label, work, achievement, featured, description)),
   deleteDish: (dishid) => dispatch(deleteDish(dishid)),
   fetchDishes: () => { dispatch(fetchDishes()) },
   resetFeedbackForm: () => { dispatch(actions.reset('feedback')) },

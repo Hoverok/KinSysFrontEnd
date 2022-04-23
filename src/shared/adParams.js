@@ -1,5 +1,6 @@
 export const adParams = {
     name: '',
+    lastName: '',
     image: '',
     imagebig: '',
     tel: '',

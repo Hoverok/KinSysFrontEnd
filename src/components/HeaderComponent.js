@@ -16,7 +16,7 @@ class Header extends Component {
             isLoginModalOpen: false,
             isRegisterAdModalOpen: false,
             isRegisterSertModalOpen: false,
-            LoggedIn: false,
+            LoggedIn: true,
             Button: "Prisijungti"
 
 
@@ -78,7 +78,7 @@ class Header extends Component {
 
     handleRegisterAd(event) {
         this.toggleRegisterAdModal();
-        this.props.postDish(adParams.name, "images/" + adParams.image, "images/" + adParams.imagebig, adParams.tel,
+        this.props.postDish(adParams.name, adParams.lastName, "images/" + adParams.image, "images/" + adParams.imagebig, adParams.tel,
             adParams.label, adParams.work, adParams.achievement, false, adParams.description);
     }
 
@@ -93,6 +93,10 @@ class Header extends Component {
 
     handleNameChanged(event) {
         adParams.name = event.target.value;
+    }
+
+    handleLastNameChanged(event) {
+        adParams.lastName = event.target.value;
     }
 
     handleImageChanged(event) {
@@ -241,9 +245,16 @@ class Header extends Component {
                             </div>
                             <div className="form-row">
                                 <div className="form-group required col-sm-8">
-                                    <label className="control-label" for="name">Pilnas vardas</label>
+                                    <label className="control-label" for="name">Vardas</label>
                                     <input type="text" className="form-control form-control-sm mr-1" id="name"
                                         placeholder="Pilnas vardas" onChange={this.handleNameChanged} />
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group required col-sm-8">
+                                    <label className="control-label" for="lastName">Pavardė</label>
+                                    <input type="text" className="form-control form-control-sm mr-1" id="lastName"
+                                        placeholder="Pavardė" onChange={this.handleLastNameChanged} />
                                 </div>
                             </div>
                             <div className="form-row">

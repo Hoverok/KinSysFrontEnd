@@ -146,7 +146,7 @@ const DishDetail = (props) => {
                         <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>{props.dish.name}</h3>
+                        <h3>{props.dish.name} {props.dish.lastName}</h3>
                         <hr />
                     </div>
                 </div>
@@ -296,6 +296,9 @@ class EditAdForm extends Component {
         if (adParams.name === '') {
             adParams.name = this.props.dish.name
         }
+        if (adParams.lastName === '') {
+            adParams.lastName = this.props.dish.lastName
+        }
         if (adParams.image === '') {
             adParams.image = this.props.dish.image
         } else {
@@ -322,7 +325,7 @@ class EditAdForm extends Component {
             adParams.description = this.props.dish.description
         }
 
-        this.props.putDish(this.props.dish.id, adParams.name, adParams.image, adParams.imagebig, adParams.tel,
+        this.props.putDish(this.props.dish.id, adParams.name, adParams.lastName, adParams.image, adParams.imagebig, adParams.tel,
             adParams.label, adParams.work, adParams.achievement, false, adParams.description);
     }
 
@@ -334,6 +337,10 @@ class EditAdForm extends Component {
 
     handleNameChanged(event) {
         adParams.name = event.target.value;
+    }
+
+    handleLastNameChanged(event) {
+        adParams.lastName = event.target.value;
     }
 
     handleImageChanged(event) {
@@ -419,6 +426,13 @@ class EditAdForm extends Component {
                                     <label className="control-label" for="name">Pilnas vardas</label>
                                     <input type="text" className="form-control form-control-sm mr-1" id="name"
                                         placeholder="Pilnas vardas" defaultValue={this.props.dish.name} onChange={this.handleNameChanged} />
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group required col-sm-8">
+                                    <label className="control-label" for="lastName">Pavardė</label>
+                                    <input type="text" className="form-control form-control-sm mr-1" id="lastName"
+                                        placeholder="Pavardė" defaultValue={this.props.dish.lastName} onChange={this.handleLastNameChanged} />
                                 </div>
                             </div>
                             <div className="form-row">

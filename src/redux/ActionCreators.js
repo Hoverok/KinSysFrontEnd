@@ -52,10 +52,12 @@ export const addDish = (dish) => ({
     payload: dish
 });
 
-export const postDish = (name, image, imagebig, tel, label, work, achievement, featured, description) => (dispatch) => {
+//post pacientas
+export const postDish = (name, lastName, image, imagebig, tel, label, work, achievement, featured, description) => (dispatch) => {
 
     const newDish = {
         name: name,
+        lastName: lastName,
         image: image,
         imagebig: imagebig,
         tel: tel,
@@ -98,10 +100,11 @@ export const postDish = (name, image, imagebig, tel, label, work, achievement, f
         });
 };
 
-export const putDish = (dishid, name, image, imagebig, tel, label, work, achievement, featured, description) => (dispatch) => {
+export const putDish = (dishid, name, lastName, image, imagebig, tel, label, work, achievement, featured, description) => (dispatch) => {
 
     const updatedDish = {
         name: name,
+        lastName: lastName,
         image: image,
         imagebig: imagebig,
         tel: tel,
