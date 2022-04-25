@@ -20,38 +20,25 @@ function RenderDish({ dish, putDish, deleteDish }) {
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
                 <div className="row">
-                    <div className="col-4">
-                        <CardImg width="100%" src={baseUrl + dish.imagebig} alt={dish.name} />
-                    </div>
-                    <div className="col-5">
+                    <div className="col">
                         <EditAdForm dish={dish} putDish={putDish} deleteDish={deleteDish} />
-                        <h4>Specializacija:</h4>
-                        <p>{dish.label}</p>
+                        <h4>Asmeninė informacija:</h4>
+                        <p>Asmens Kodas: {dish.personalId}</p>
+                        <p>Sveikatos istorijos numeris: {dish.healthHistoryNr}</p>
+                        <p>Gimimo data: {dish.dateOfBirth}</p>
+                        <p>Lytis: {dish.gender}</p>
+                        <p>Adresas: {dish.address}</p>
+                        <p>Tel. numeris:{dish.tel}</p>
+                        <p>El. paštas: {dish.email}</p>
 
-                        <h4>Aprašymas </h4>
-                        <p>{dish.description}</p>
+                        <h4>Lygos aprašymas:</h4>
+                        <p>{dish.illnessDescription}</p>
 
-                        <h4>Darbo patirtis:</h4>
-                        <p>{dish.work}</p>
-
-                        <h4>Sportiniai pasiekimai ir laimėjimai: </h4>
-                        <p>{dish.achievement}</p>
-
-                        <h4>Kontaktai:</h4>
-                        <p>{dish.tel}</p>
-
-                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i
-                            class="fa fa-facebook fa-lg"></i></a>
-                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i
-                            class="fa fa-linkedin fa-lg"></i></a>
-                        <a class="btn btn-social-icon btn-instagram" href="http://instagram.com/"><i
-                            class="fa fa-instagram fa-lg"></i></a>
-                        <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o fa-lg"></i></a>
+                        <h4>Diagnozė:</h4>
+                        <p>{dish.diagnosis}</p>
 
                     </div>
                 </div>
-
-
             </FadeTransform>
         );
     }
@@ -61,7 +48,6 @@ function RenderDish({ dish, putDish, deleteDish }) {
         );
     }
 }
-
 
 function RenderComments({ comments, postComment, dishId }) {
     if (comments == null) {
@@ -101,7 +87,7 @@ function RenderComments({ comments, postComment, dishId }) {
                 <Fade in>
                     <div className='col-12' >
 
-                        <h4> Atsiliepimai </h4>
+                        <h4> Pratimai </h4>
 
                         <ul className='list-unstyled'>
                             {commmentArray}
@@ -142,11 +128,11 @@ const DishDetail = (props) => {
             <div className="container">
                 <div className="row">
                     <Breadcrumb>
-                        <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
+                        <BreadcrumbItem><Link to='/menu'>Pacientų sąrašas</Link></BreadcrumbItem>
                         <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>{props.dish.name} {props.dish.lastName}</h3>
+                        <h3>{props.dish.name}</h3>
                         <hr />
                     </div>
                 </div>
@@ -196,10 +182,10 @@ class CommentForm extends Component {
         return (
             <div>
                 <Button outline onClick={this.toggleModal}>
-                    <span className="fa fa-pencil fa-lg"></span> Pateikti atsiliepimą
+                    <span className="fa fa-pencil fa-lg"></span> Pridėti pratimą
                 </Button>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader toggle={this.toggleModal}>Pateikti atsiliepimą</ModalHeader>
+                    <ModalHeader toggle={this.toggleModal}>Pridėti pratimą</ModalHeader>
                     <ModalBody>
                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
@@ -296,37 +282,39 @@ class EditAdForm extends Component {
         if (adParams.name === '') {
             adParams.name = this.props.dish.name
         }
-        if (adParams.lastName === '') {
-            adParams.lastName = this.props.dish.lastName
+        if (adParams.sessionActivity === '') {
+            adParams.sessionActivity = this.props.dish.sessionActivity
         }
-        if (adParams.image === '') {
-            adParams.image = this.props.dish.image
-        } else {
-            adParams.image = "images/" + adParams.image
+        if (adParams.healthHistoryNr === '') {
+            adParams.healthHistoryNr = this.props.dish.healthHistoryNr
         }
-        if (adParams.imagebig === '') {
-            adParams.imagebig = this.props.dish.imagebig
-        } else {
-            adParams.imagebig = "images/" + adParams.imagebig
+        if (adParams.personalId === '') {
+            adParams.personalId = this.props.dish.personalId
+        }
+        if (adParams.dateOfBirth === '') {
+            adParams.dateOfBirth = this.props.dish.dateOfBirth
+        }
+        if (adParams.gender === '') {
+            adParams.gender = this.props.dish.gender
+        }
+        if (adParams.address === '') {
+            adParams.address = this.props.dish.address
         }
         if (adParams.tel === '') {
             adParams.tel = this.props.dish.tel
         }
-        if (adParams.label === '') {
-            adParams.label = this.props.dish.label
+        if (adParams.email === '') {
+            adParams.email = this.props.dish.email
         }
-        if (adParams.work === '') {
-            adParams.work = this.props.dish.work
+        if (adParams.illnessDescription === '') {
+            adParams.illnessDescription = this.props.dish.illnessDescription
         }
-        if (adParams.achievement === '') {
-            adParams.achievement = this.props.dish.achievement
-        }
-        if (adParams.description === '') {
-            adParams.description = this.props.dish.description
+        if (adParams.diagnosis === '') {
+            adParams.diagnosis = this.props.dish.diagnosis
         }
 
-        this.props.putDish(this.props.dish.id, adParams.name, adParams.lastName, adParams.image, adParams.imagebig, adParams.tel,
-            adParams.label, adParams.work, adParams.achievement, false, adParams.description);
+        this.props.putDish(this.props.dish.id, adParams.sessionActivity, adParams.name, adParams.healthHistoryNr, adParams.personalId, adParams.dateOfBirth, adParams.gender,
+            adParams.address, adParams.tel, adParams.email, adParams.illnessDescription, adParams.diagnosis);
     }
 
     handleDeleteAd(event) {
@@ -335,87 +323,73 @@ class EditAdForm extends Component {
         this.props.deleteDish(this.props.dish.id);
     }
 
+
+    handleLabelSessionChanged(event) {
+        adParams.sessionActivity = event.target.value;
+    }
+
     handleNameChanged(event) {
         adParams.name = event.target.value;
     }
 
-    handleLastNameChanged(event) {
-        adParams.lastName = event.target.value;
+    handleHealthHistoryChanged(event) {
+        adParams.healthHistoryNr = event.target.value;
     }
 
-    handleImageChanged(event) {
-        adParams.image = event.target.files[0].name;
+    handlePersonalIdChanged(event) {
+        adParams.personalId = event.target.value;
     }
 
-    handleImageBigChanged(event) {
-        adParams.imagebig = event.target.files[0].name;
+    handleDateOfBirthChanged(event) {
+        adParams.dateOfBirth = event.target.value;
+    }
+
+    handleLabelGenderChanged(event) {
+        adParams.gender = event.target.value;
+    }
+
+    handleAddressChanged(event) {
+        adParams.address = event.target.value;
     }
 
     handleTelChanged(event) {
         adParams.tel = event.target.value;
     }
 
-    handleLabelChanged(event) {
-        adParams.label = event.target.value;
+    handleEmailChanged(event) {
+        adParams.email = event.target.value;
     }
 
-    handleWorkChanged(event) {
-        adParams.work = event.target.value;
+    handleIllnessDescriptionChanged(event) {
+        adParams.illnessDescription = event.target.value;
     }
 
-    handleAchievementChanged(event) {
-        adParams.achievement = event.target.value;
+    handleDiagnosisChanged(event) {
+        adParams.diagnosis = event.target.value;
     }
-
-    handleDescriptionChanged(event) {
-        adParams.description = event.target.value;
-    }
-
     render() {
         return (
             <div>
                 <Button outline onClick={this.toggleModal}>
-                    <span className="fa fa-pencil fa-lg"></span> Redaguoti skelbimą
+                    <span className="fa fa-pencil fa-lg"></span> Redaguoti duomenis
                 </Button>
                 {"   "}
                 <Button outline onClick={this.toggleDeleteModal}>
-                    <span className="fa fa-trash fa-lg"></span> Pašalinti skelbimą
+                    <span className="fa fa-trash fa-lg"></span> Ištrinti
                 </Button>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader toggle={this.toggleModal}>Redaguoti skelbimą</ModalHeader>
+                    <ModalHeader toggle={this.toggleModal}>Redaguoti duomenis</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleUpdateAd}>
                             <div className="form-row">
                                 <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="Photo">Nuotrauka (maža): </label>
-                                    <div className="col-12 col-md-6 align-items-center">
-                                        <input type="file" id="photo" onChange={this.handleImageChanged} />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="Photo">Nuotrauka (didelė): </label>
-                                    <div className="col-12 col-md-6 align-items-center">
-                                        <input type="file" id="photo" onChange={this.handleImageBigChanged} />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="specialization">Specializacija</label>
+                                    <label className="control-label" for="kineState">Sesijos statusas</label>
                                     <div className="form-group row">
                                         <div className="col-6">
-                                            <select onChange={this.handleLabelChanged} defaultValue={this.props.dish.label}>
+                                        <select onChange={this.handleLabelChanged} defaultValue={this.props.dish.sessionActivity}>
                                                 <option value=""></option>
-                                                <option value="Jėga">Jėga</option>
-                                                <option value="Ištvermė">Ištvermė</option>
-                                                <option value="H.I.I.T">H.I.I.T</option>
-                                                <option value="Crossfit">Crossfit</option>
-                                                <option value="Reabilitacija">Reabilitacija</option>
-                                                <option value="Svorio metimas">Svorio metimas</option>
-                                                <option value="Svorio priaugimas">Svorio priaugimas</option>
-                                                <option value="Kūno skulptūra">Kūno skulptūra</option>
+                                                <option value="Laukia">Laukia</option>
+                                                <option value="Aktyvus">Aktyvus</option>
                                             </select>
                                         </div>
                                     </div>
@@ -423,34 +397,52 @@ class EditAdForm extends Component {
                             </div>
                             <div className="form-row">
                                 <div className="form-group required col-sm-8">
-                                    <label className="control-label" for="name">Pilnas vardas</label>
+                                    <label className="control-label" for="name">Vardas Pavardė</label>
                                     <input type="text" className="form-control form-control-sm mr-1" id="name"
-                                        placeholder="Pilnas vardas" defaultValue={this.props.dish.name} onChange={this.handleNameChanged} />
+                                        placeholder="Vardas Pavardė" defaultValue={this.props.dish.name} onChange={this.handleNameChanged} />
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group required col-sm-8">
-                                    <label className="control-label" for="lastName">Pavardė</label>
-                                    <input type="text" className="form-control form-control-sm mr-1" id="lastName"
-                                        placeholder="Pavardė" defaultValue={this.props.dish.lastName} onChange={this.handleLastNameChanged} />
+                                    <label className="control-label" for="healthHistoryNr">Sveikatos istorijos numeris</label>
+                                    <input type="text" className="form-control form-control-sm mr-1" id="healthHistoryNr"
+                                        placeholder="Sveikatos istorijos Nr." defaultValue={this.props.dish.healthHistoryNr} onChange={this.handleHealthHistoryChanged} />
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group required col-sm-8">
+                                    <label className="control-label" for="personalId">Asmens kodas</label>
+                                    <input type="text" className="form-control form-control-sm mr-1" id="personalId"
+                                        placeholder="Asmens kodas" defaultValue={this.props.dish.personalId} onChange={this.handlePersonalIdChanged} />
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group required col-sm-8">
+                                    <label className="control-label" for="dateOfBirth">Gimimo data</label>
+                                    <input type="text" className="form-control form-control-sm mr-1" id="dateOfBirth"
+                                        placeholder="YYYY-MM-DD" defaultValue={this.props.dish.dateOfBirth} onChange={this.handleDateOfBirthChanged} />
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="competence">Aprašymas</label>
-                                    <textarea className="form-control" id="competence" placeholder="Aprašymas" name="competence" rows="6" defaultValue={this.props.dish.description} onChange={this.handleDescriptionChanged}></textarea>
+                                    <label className="control-label" for="kineState">Lytis</label>
+                                    <div className="form-group row">
+                                        <div className="col-6">
+                                            <select defaultValue={this.props.dish.gender} onChange={this.handleLabelGenderChanged} >
+                                                <option value=""></option>
+                                                <option value="Vyr.">Vyr.</option>
+                                                <option value="Mot.">Mot.</option>
+                                                <option value="Kit.">Kit.</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="form-row">
-                                <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="workExperience">Darbo patirtis</label>
-                                    <textarea className="form-control" id="workExperience" placeholder="Darbo patirtis" name="workExperience" rows="3" defaultValue={this.props.dish.work} onChange={this.handleWorkChanged}></textarea>
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="achievements">Sportiniai pasiekimai ir laimėjimai</label>
-                                    <textarea className="form-control" id="achievements" placeholder="Sportiniai pasiekimai ir laimėjimai" name="achievements" rows="6" defaultValue={this.props.dish.achievement} onChange={this.handleAchievementChanged}></textarea>
+                                <div className="form-group required col-sm-8">
+                                    <label className="control-label" for="address">Adresas</label>
+                                    <input type="text" className="form-control form-control-sm mr-1" id="address"
+                                        placeholder="Miestas, Gatvė namas-būtas" defaultValue={this.props.dish.address} onChange={this.handleAddressChanged} />
                                 </div>
                             </div>
                             <div className="form-row">
@@ -462,30 +454,23 @@ class EditAdForm extends Component {
                             </div>
                             <div className="form-row">
                                 <div className="form-group col-sm-8">
-                                    <label for="facebookLink">Facebook paskyra</label>
-                                    <input type="link" className="form-control form-control-sm mr-1" id="facebookLink"
-                                        placeholder="Facebook paskryos nuoroda" value="http://www.facebook.com/profile.php?id=" />
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group col-sm-8">
-                                    <label for="linkedinLink">Linkedin paskyra</label>
-                                    <input type="link" className="form-control form-control-sm mr-1" id="linkedinLink"
-                                        placeholder="Linkedin paskyros nuoroda" value="http://www.linkedin.com/in/" />
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group col-sm-8">
-                                    <label for="instagramLink">Instagram paskyra</label>
-                                    <input type="link" className="form-control form-control-sm mr-1" id="instagramLink"
-                                        placeholder="Instagram paskyros nuoroda" value="http://instagram.com/" />
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group col-sm-8">
                                     <label for="email">El. paštas</label>
                                     <input type="email" className="form-control form-control-sm mr-1" id="email"
-                                        placeholder="Eletroninio pašto adresas" />
+                                        placeholder="Elektroninio pašto adresas" defaultValue={this.props.dish.email} onChange={this.handleEmailChanged} />
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group required col-sm-12">
+                                    <label className="control-label" for="illnessDescription">Lygos aprašymas</label>
+                                    <textarea className="form-control" id="illnessDescription" placeholder="Paciento lygos aprašymas"
+                                        name="address" rows="6" defaultValue={this.props.dish.illnessDescription} onChange={this.handleIllnessDescriptionChanged}></textarea>
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group required col-sm-12">
+                                    <label className="control-label" for="diagnosis">Diagnozės</label>
+                                    <textarea className="form-control" id="diagnosis" placeholder="Diagnozės"
+                                        name="address" rows="6" defaultValue={this.props.dish.diagnosis} onChange={this.handleDiagnosisChanged}></textarea>
                                 </div>
                             </div>
                             <div className="form-row">

@@ -9,9 +9,7 @@ export const adParams = {
     tel: '',
     email: '',
     illnessDescription: '',
-    diagnosis: '',
-    featured: '',
-    description: ''
+    diagnosis: ''
 };
 
 export default adParams;

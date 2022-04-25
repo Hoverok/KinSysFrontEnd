@@ -180,7 +180,7 @@ class Header extends Component {
                     <div className="container">
                         <div className="row row-header">
                             <div className="col-12 col-sm-6">
-                                <h2>Nuotolinės kinoziterapijos sistema</h2>
+                                <h2>Nuotolinės kineziterapijos sistema</h2>
                             </div>
                         </div>
                     </div>

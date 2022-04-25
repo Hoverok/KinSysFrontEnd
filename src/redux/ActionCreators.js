@@ -100,19 +100,20 @@ export const postDish = (sessionActivity, name, healthHistoryNr, personalId, dat
         });
 };
 
-export const putDish = (dishid, name, lastName, image, imagebig, tel, label, work, achievement, featured, description) => (dispatch) => {
+export const putDish = (dishid, sessionActivity, name, healthHistoryNr, personalId, dateOfBirth, gender, address, tel, email, illnessDescription, diagnosis) => (dispatch) => {
 
     const updatedDish = {
+        sessionActivity: sessionActivity,
         name: name,
-        lastName: lastName,
-        image: image,
-        imagebig: imagebig,
+        healthHistoryNr: healthHistoryNr,
+        personalId: personalId,
+        dateOfBirth: dateOfBirth,
+        gender: gender,
+        address: address,
         tel: tel,
-        label: label,
-        work: work,
-        achievement: achievement,
-        featured: featured,
-        description: description
+        email: email,
+        illnessDescription: illnessDescription,
+        diagnosis: diagnosis,
 
     };
     //newDish.date = new Date().toISOString();
@@ -143,7 +144,7 @@ export const putDish = (dishid, name, lastName, image, imagebig, tel, label, wor
         .then(response => dispatch(addDish(response)))
         .catch(error => {
             //console.log('Post trainer ', error.message);
-            alert('Skelbimas atnaujintas')
+            alert('Duomenys atnaujinti')
             // + 'nError: ' + error.message);
         });
 };
@@ -176,7 +177,7 @@ export const deleteDish = (dishid) => (dispatch) => {
         .then(response => dispatch(addDish(response)))
         .catch(error => {
             //console.log('Post trainer ', error.message);
-            alert('Skelbimas pašalintas')
+            alert('Pašalinta')
             // + 'nError: ' + error.message);
         });
 };
