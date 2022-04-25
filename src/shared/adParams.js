@@ -1,12 +1,15 @@
 export const adParams = {
+    sessionActivity: '',
     name: '',
-    lastName: '',
-    image: '',
-    imagebig: '',
+    healthHistoryNr: '',
+    personalId: '',
+    dateOfBirth: '',
+    gender: '',
+    address: '',
     tel: '',
-    label: '',
-    work: '',
-    achievement: '',
+    email: '',
+    illnessDescription: '',
+    diagnosis: '',
     featured: '',
     description: ''
 };

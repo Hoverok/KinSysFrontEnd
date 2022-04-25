@@ -78,8 +78,8 @@ class Header extends Component {
 
     handleRegisterAd(event) {
         this.toggleRegisterAdModal();
-        this.props.postDish(adParams.name, adParams.lastName, "images/" + adParams.image, "images/" + adParams.imagebig, adParams.tel,
-            adParams.label, adParams.work, adParams.achievement, false, adParams.description);
+        this.props.postDish(adParams.sessionActivity, adParams.name, adParams.healthHistoryNr, adParams.personalId, adParams.dateOfBirth, adParams.gender,
+            adParams.address, adParams.tel, adParams.email, adParams.illnessDescription, adParams.diagnosis);
     }
 
     handleRegisterSert(event) {
@@ -89,42 +89,48 @@ class Header extends Component {
         //"Toble tenis?", "Nuo 2017 metų", "Toble tennis god", false, "Veri gud toble tennis sportsmen");
     }
 
-
+    handleLabelSessionChanged(event) {
+        adParams.sessionActivity = event.target.value;
+    }
 
     handleNameChanged(event) {
         adParams.name = event.target.value;
     }
 
-    handleLastNameChanged(event) {
-        adParams.lastName = event.target.value;
+    handleHealthHistoryChanged(event) {
+        adParams.healthHistoryNr = event.target.value;
     }
 
-    handleImageChanged(event) {
-        adParams.image = event.target.files[0].name;
+    handlePersonalIdChanged(event) {
+        adParams.personalId = event.target.value;
     }
 
-    handleImageBigChanged(event) {
-        adParams.imagebig = event.target.files[0].name;
+    handleDateOfBirthChanged(event) {
+        adParams.dateOfBirth = event.target.value;
+    }
+
+    handleLabelGenderChanged(event) {
+        adParams.gender = event.target.value;
+    }
+
+    handleAddressChanged(event) {
+        adParams.address = event.target.value;
     }
 
     handleTelChanged(event) {
         adParams.tel = event.target.value;
     }
 
-    handleLabelChanged(event) {
-        adParams.label = event.target.value;
+    handleEmailChanged(event) {
+        adParams.email = event.target.value;
     }
 
-    handleWorkChanged(event) {
-        adParams.work = event.target.value;
+    handleIllnessDescriptionChanged(event) {
+        adParams.illnessDescription = event.target.value;
     }
 
-    handleAchievementChanged(event) {
-        adParams.achievement = event.target.value;
-    }
-
-    handleDescriptionChanged(event) {
-        adParams.description = event.target.value;
+    handleDiagnosisChanged(event) {
+        adParams.diagnosis = event.target.value;
     }
 
     render() {
@@ -144,7 +150,7 @@ class Header extends Component {
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/menu">
-                                        <span className="fa fa-list fa-lg"></span> Treneriai
+                                        <span className="fa fa-list fa-lg"></span> Pacientai
                                     </NavLink>
                                 </NavItem>
                             </Nav>
@@ -157,7 +163,7 @@ class Header extends Component {
                                 ' '
                                 <NavItem>
                                     <Button disabled={!this.state.LoggedIn} color="success" onClick={this.toggleRegisterAdModal}>
-                                        Registruoti skelbimą
+                                        Registruoti pacientą
                                     </Button>
                                 </NavItem>
                                 ' '
@@ -204,40 +210,16 @@ class Header extends Component {
                 </Modal>
 
                 <Modal isOpen={this.state.isRegisterAdModalOpen} toggle={this.toggleRegisterAdModal}>
-                    <ModalHeader toggle={this.toggleRegisterAdModal}>Registruoti skelbimą</ModalHeader>
+                    <ModalHeader toggle={this.toggleRegisterAdModal}>Registruoti pacientą</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleRegisterAd}>
                             <div className="form-row">
                                 <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="Photo">Nuotrauka (maža): </label>
-                                    <div className="col-12 col-md-6 align-items-center">
-                                        <input type="file" id="photo" onChange={this.handleImageChanged} />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="Photo">Nuotrauka (didelė): </label>
-                                    <div className="col-12 col-md-6 align-items-center">
-                                        <input type="file" id="photo" onChange={this.handleImageBigChanged} />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="specialization">Specializacija</label>
+                                    <label className="control-label" for="kineState">Sesijos statusas</label>
                                     <div className="form-group row">
                                         <div className="col-6">
-                                            <select onChange={this.handleLabelChanged} >
-                                                <option value=""></option>
-                                                <option value="Jėga">Jėga</option>
-                                                <option value="Ištvermė">Ištvermė</option>
-                                                <option value="H.I.I.T">H.I.I.T</option>
-                                                <option value="Crossfit">Crossfit</option>
-                                                <option value="Reabilitacija">Reabilitacija</option>
-                                                <option value="Svorio metimas">Svorio metimas</option>
-                                                <option value="Svorio priaugimas">Svorio priaugimas</option>
-                                                <option value="Kūno skulptūra">Kūno skulptūra</option>
+                                            <select onChange={this.handleLabelSessionChanged} >
+                                                <option value="Laukia">Pacientas laukia sesijos pradžios</option>
                                             </select>
                                         </div>
                                     </div>
@@ -245,34 +227,51 @@ class Header extends Component {
                             </div>
                             <div className="form-row">
                                 <div className="form-group required col-sm-8">
-                                    <label className="control-label" for="name">Vardas</label>
+                                    <label className="control-label" for="name">Vardas Pavardė</label>
                                     <input type="text" className="form-control form-control-sm mr-1" id="name"
-                                        placeholder="Pilnas vardas" onChange={this.handleNameChanged} />
+                                        placeholder="Vardas Pavardė" onChange={this.handleNameChanged} />
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group required col-sm-8">
-                                    <label className="control-label" for="lastName">Pavardė</label>
-                                    <input type="text" className="form-control form-control-sm mr-1" id="lastName"
-                                        placeholder="Pavardė" onChange={this.handleLastNameChanged} />
+                                    <label className="control-label" for="healthHistoryNr">Sveikatos istorijos numeris</label>
+                                    <input type="text" className="form-control form-control-sm mr-1" id="healthHistoryNr"
+                                        placeholder="Sveikatos istorijos Nr." onChange={this.handleHealthHistoryChanged} />
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group required col-sm-8">
+                                    <label className="control-label" for="personalId">Asmens kodas</label>
+                                    <input type="text" className="form-control form-control-sm mr-1" id="personalId"
+                                        placeholder="Asmens kodas" onChange={this.handlePersonalIdChanged} />
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group required col-sm-8">
+                                    <label className="control-label" for="dateOfBirth">Gimimo data</label>
+                                    <input type="text" className="form-control form-control-sm mr-1" id="dateOfBirth"
+                                        placeholder="YYYY-MM-DD" onChange={this.handleDateOfBirthChanged} />
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="competence">Aprašymas</label>
-                                    <textarea className="form-control" id="competence" placeholder="Aprašymas" name="competence" rows="6" onChange={this.handleDescriptionChanged}></textarea>
+                                    <label className="control-label" for="kineState">Lytis</label>
+                                    <div className="form-group row">
+                                        <div className="col-6">
+                                            <select onChange={this.handleLabelGenderChanged} >
+                                                <option value="male">Vyr.</option>
+                                                <option value="female">Mot.</option>
+                                                <option value="other">Kit.</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="form-row">
-                                <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="workExperience">Darbo patirtis</label>
-                                    <textarea className="form-control" id="workExperience" placeholder="Darbo patirtis" name="workExperience" rows="3" onChange={this.handleWorkChanged}></textarea>
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="achievements">Sportiniai pasiekimai ir laimėjimai</label>
-                                    <textarea className="form-control" id="achievements" placeholder="Sportiniai pasiekimai ir laimėjimai" name="achievements" rows="6" onChange={this.handleAchievementChanged}></textarea>
+                                <div className="form-group required col-sm-8">
+                                    <label className="control-label" for="address">Adresas</label>
+                                    <input type="text" className="form-control form-control-sm mr-1" id="address"
+                                        placeholder="Miestas, Gatvė namas-būtas" onChange={this.handleAddressChanged} />
                                 </div>
                             </div>
                             <div className="form-row">
@@ -284,36 +283,29 @@ class Header extends Component {
                             </div>
                             <div className="form-row">
                                 <div className="form-group col-sm-8">
-                                    <label for="facebookLink">Facebook paskyra</label>
-                                    <input type="link" className="form-control form-control-sm mr-1" id="facebookLink"
-                                        placeholder="Facebook paskryos nuoroda" value="http://www.facebook.com/profile.php?id=" />
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group col-sm-8">
-                                    <label for="linkedinLink">Linkedin paskyra</label>
-                                    <input type="link" className="form-control form-control-sm mr-1" id="linkedinLink"
-                                        placeholder="Linkedin paskyros nuoroda" value="http://www.linkedin.com/in/" />
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group col-sm-8">
-                                    <label for="instagramLink">Instagram paskyra</label>
-                                    <input type="link" className="form-control form-control-sm mr-1" id="instagramLink"
-                                        placeholder="Instagram paskyros nuoroda" value="http://instagram.com/" />
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group col-sm-8">
                                     <label for="email">El. paštas</label>
                                     <input type="email" className="form-control form-control-sm mr-1" id="email"
-                                        placeholder="Eletroninio pašto adresas" />
+                                        placeholder="Elektroninio pašto adresas" onChange={this.handleEmailChanged} />
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group required col-sm-12">
+                                    <label className="control-label" for="illnessDescription">Lygos aprašymas</label>
+                                    <textarea className="form-control" id="illnessDescription" placeholder="Paciento lygos aprašymas"
+                                     name="address" rows="6" onChange={this.handleIllnessDescriptionChanged}></textarea>
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group required col-sm-12">
+                                    <label className="control-label" for="diagnosis">Diagnozės</label>
+                                    <textarea className="form-control" id="diagnosis" placeholder="Diagnozės"
+                                     name="address" rows="6" onChange={this.handleDiagnosisChanged}></textarea>
                                 </div>
                             </div>
                             <div className="form-row">
                                 <Button type="cancel" className="btn btn-secondary btn-sm ml-auto"
                                     data-dismiss="modal">Atšaukti</Button>
-                                <Button type="submit" value="submit" className="bg-primary">Registruoti skelbimą</Button>
+                                <Button type="submit" value="submit" className="bg-primary">Registruoti pacientą</Button>
                             </div>
                         </Form>
                     </ModalBody>
