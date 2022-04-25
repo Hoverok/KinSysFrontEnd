@@ -17,10 +17,7 @@ class Header extends Component {
             isRegisterAdModalOpen: false,
             isRegisterSertModalOpen: false,
             LoggedIn: true,
-            Button: "Prisijungti"
-
-
-
+            Button: "Atsijungti"
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleLoginModal = this.toggleLoginModal.bind(this);

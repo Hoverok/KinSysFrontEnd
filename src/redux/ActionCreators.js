@@ -8,12 +8,13 @@ export const addComment = (comment) => ({
     payload: comment
 });
 
-export const postComment = (dishId, rating, author, comment) => (dispatch) => {
+export const postComment = (dishId, rating, author, videoLink, comment) => (dispatch) => {
 
     const newComment = {
         dishId: dishId,
         rating: rating,
         author: author,
+        videoLink: videoLink,
         comment: comment
     };
     newComment.date = new Date().toISOString();

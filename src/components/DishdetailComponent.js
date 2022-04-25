@@ -63,17 +63,16 @@ function RenderComments({ comments, postComment, dishId }) {
                     <Card>
                         <CardBody className="bg-faded">
                             <blockquote className="blockquote">
-                                <p>{review.rating}/5 <span class="fa fa-star checked fa-lg"></span></p>
-
+                                <p>{review.author}</p>
+                                <p>{review.videoLink}</p>
                                 <p>{review.comment}</p>
-                                <footer className="blockquote-footer">{review.author} ,
-                                    &nbsp;
-                                    {new Intl.DateTimeFormat('en-US', {
-                                        year: 'numeric',
-                                        month: 'long',
-                                        day: '2-digit'
-                                    }).format(new Date(Date.parse(review.date)))}
-                                </footer>
+                                <Button>
+                                    <span className="fa fa-pencil fa-lg"></span> Redaguoti pratimą
+                                </Button>
+                                {"   "}
+                                <Button>
+                                    <span className="fa fa-pencil fa-lg"></span> Ištrinti pratimą
+                                </Button>
                             </blockquote>
                         </CardBody>
                     </Card>
@@ -137,7 +136,7 @@ const DishDetail = (props) => {
                     </div>
                 </div>
                 <div className="row justify-content-center">
-                    <RenderDish dish={props.dish} putDish={props.putDish} deleteDish={props.deleteDish}/>
+                    <RenderDish dish={props.dish} putDish={props.putDish} deleteDish={props.deleteDish} />
                 </div>
                 <hr />
                 <div className="row justify-content-center">
@@ -175,7 +174,7 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.videoLink, values.comment);
     }
 
     render() {
@@ -189,39 +188,23 @@ class CommentForm extends Component {
                     <ModalBody>
                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
-                                <Label htmlFor="rating" md={12}>Vertinimas</Label>
-                                <Col md={12}>
-                                    <Control.select defaultValue="1" model=".rating" name="rating" id="rating"
-                                        className="form-control">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </Control.select>
-                                </Col>
-                            </Row>
-                            <Row className="form-group">
-                                <Label htmlFor="author" md={12}>Vardas</Label>
+                                <Label htmlFor="author" md={12}>Pratimo pavadinimas</Label>
                                 <Col md={12}>
                                     <Control.text model=".author" id="author" name="author"
-                                        placeholder="Vardas"
-                                        className="form-control"
-                                        validators={{
-                                            minLength: minLength(3), maxLength: maxLength(15)
-                                        }} />
-                                    <Errors className="text-danger"
-                                        model=".author"
-                                        show="touched"
-                                        messages={{
-                                            minLength: 'Must be greater than 2 characters',
-                                            maxLength: 'Must be 15 characters or less'
-                                        }}
-                                    />
+                                        placeholder="Pavadinimas"
+                                        className="form-control" />
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="comment" md={12}>Komentaras</Label>
+                                <Label htmlFor="videoLink" md={12}>Vaizdo įrašo nuoroda</Label>
+                                <Col md={12}>
+                                    <Control.text model=".videoLink" id="videoLink" name="videoLink"
+                                        placeholder="https:/...."
+                                        className="form-control" />
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <Label htmlFor="comment" md={12}>Pratimo komentaras</Label>
                                 <Col md={12}>
                                     <Control.textarea model=".comment" id="comment" name="comment"
                                         rows="6"
@@ -231,7 +214,7 @@ class CommentForm extends Component {
                             <Row className="form-group">
                                 <Col md={12}>
                                     <Button type="submit" color="primary">
-                                        Pateikti
+                                        Pridėti
                                     </Button>
                                 </Col>
                             </Row>
@@ -386,7 +369,7 @@ class EditAdForm extends Component {
                                     <label className="control-label" for="kineState">Sesijos statusas</label>
                                     <div className="form-group row">
                                         <div className="col-6">
-                                        <select onChange={this.handleLabelChanged} defaultValue={this.props.dish.sessionActivity}>
+                                            <select onChange={this.handleLabelChanged} defaultValue={this.props.dish.sessionActivity}>
                                                 <option value=""></option>
                                                 <option value="Laukia">Laukia</option>
                                                 <option value="Aktyvus">Aktyvus</option>
@@ -476,25 +459,25 @@ class EditAdForm extends Component {
                             <div className="form-row">
                                 <Button type="cancel" className="btn btn-secondary btn-sm ml-auto"
                                     data-dismiss="modal">Atšaukti</Button>
-                                <Button type="submit" value="submit" className="bg-primary">Patvirtinti skelbimo pakeitimus</Button>
+                                <Button type="submit" value="submit" className="bg-primary">Patvirtinti duoemnų pakeitimus</Button>
                             </div>
                         </Form>
                     </ModalBody>
                 </Modal>
 
                 <Modal isOpen={this.state.isDeleteModalOpen} toggle={this.toggleDeleteModal}>
-                    <ModalHeader toggle={this.toggleDeleteModal}>Redaguoti skelbimą</ModalHeader>
+                    <ModalHeader toggle={this.toggleDeleteModal}>Redaguoti paciento duomenis</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleDeleteAd}>
                             <div className="form-row">
                                 <div className="form-group required col-sm-12">
-                                    <label className="control-label" for="Photo">Ar tikrai norite pašalinti skelbimą </label>
+                                    <label className="control-label" for="Photo">Ar tikrai norite pašalinti? </label>
                                 </div>
                             </div>
                             <div className="form-row">
                                 <Button type="cancel" className="btn btn-secondary btn-sm ml-auto"
                                     data-dismiss="modal">Atšaukti</Button>
-                                <Button type="submit" value="submit" className="bg-primary">Pašalinti skelbimą</Button>
+                                <Button type="submit" value="submit" className="bg-primary">Pašalinti</Button>
                             </div>
                         </Form>
                     </ModalBody>

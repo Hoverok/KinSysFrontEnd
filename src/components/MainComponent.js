@@ -25,8 +25,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
 
-  postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
-  
+  postComment: (dishId, rating, author, videoLink, comment) => dispatch(postComment(dishId, rating, author,  videoLink, comment)),
   postDish: (sessionActivity, name, healthHistoryNr, personalId, dateOfBirth, gender, address, tel, email, illnessDescription, diagnosis) => dispatch(postDish(sessionActivity, name, healthHistoryNr, personalId, dateOfBirth, gender, address, tel, email, illnessDescription, diagnosis)),
   putDish: (dishid, sessionActivity, name, healthHistoryNr, personalId, dateOfBirth, gender, address, tel, email, illnessDescription, diagnosis) => dispatch(putDish(dishid, sessionActivity, name, healthHistoryNr, personalId, dateOfBirth, gender, address, tel, email, illnessDescription, diagnosis)),
   deleteDish: (dishid) => dispatch(deleteDish(dishid)),
