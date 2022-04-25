@@ -1,8 +1,9 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform } from 'react-animation-components';
+import { Link } from 'react-router-dom';
 
 function RenderCard({ item, isLoading, errMess }) {
     if (isLoading) {
@@ -21,14 +22,12 @@ function RenderCard({ item, isLoading, errMess }) {
                 trasnformProps={{
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
-                <Card>
-                    <CardImg src={baseUrl + item.image} alt={item.name} />
-                    <CardBody>
-                        <CardTitle>{item.name}</CardTitle>
-                        {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}
-                        <CardText>{item.description}</CardText>
-                    </CardBody>
-                </Card>
+                <div>
+                <Link to={`/menu`} >
+                    <Button color="primary" size="lg" block>Gydytojams</Button>
+                </Link>
+                    <Button color="secondary" size="lg" block>Pacientams</Button>
+                </div>
             </FadeTransform>
         );
 }
@@ -37,14 +36,10 @@ function Home(props) {
     return (
         <div className="container">
             <div className="row col-12">
-                <h2>Rekomenduojami treneriai</h2>
-                <hr />
             </div>
             <div className="row justify-content-center">
-                <div className="col-4 ">
-                    <RenderCard item={props.dish}
-                        isLoading={props.dishesLoading}
-                        errMess={props.dishesErrMess} />
+                <div className="col-8 ">
+                    <RenderCard />
                 </div>
             </div>
         </div>

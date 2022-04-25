@@ -22,6 +22,9 @@ function RenderDish({ dish, putDish, deleteDish }) {
                 <div className="row">
                     <div className="col">
                         <EditAdForm dish={dish} putDish={putDish} deleteDish={deleteDish} />
+                        <div className="d-none d-sm-block">
+                            <span className="badge badge-info">{dish.sessionActivity}</span>
+                        </div>
                         <h4>Asmeninė informacija:</h4>
                         <p>Asmens Kodas: {dish.personalId}</p>
                         <p>Sveikatos istorijos numeris: {dish.healthHistoryNr}</p>

@@ -10,9 +10,6 @@ function Footer(props) {
                         <h5>Links</h5>
                         <ul className="list-unstyled">
                             <li><Link to="/home">Pradinis</Link></li>
-                            <li><Link to="/aboutus">Apie mus</Link></li>
-                            <li><Link to="/menu">Treneriai</Link></li>
-                            <li><Link to="/contactus">Kontaktai</Link></li>
                         </ul>
                     </div>
                     <div className="col-7 col-sm-5">
@@ -20,7 +17,7 @@ function Footer(props) {
                         <address>
                             <i className="fa fa-phone fa-lg"></i>: +3706254658<br />
                             <i className="fa fa-fax fa-lg"></i>: +3706354235<br />
-                            <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:treneriai@tps.net">treneriai@tps.net</a>
+                            <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:kineziterapija@tps.net">kineziterapija@tps.net</a>
                         </address>
                     </div>
                     <div className="col-12 col-sm-4 align-self-center">
@@ -36,7 +33,7 @@ function Footer(props) {
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-auto">
-                        <p>© Copyright 2021 TPS</p>
+                        <p>© Copyright 2022 Kine</p>
                     </div>
                 </div>
             </div>

@@ -153,12 +153,6 @@ class Header extends Component {
                             </Nav>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <Button disabled={!this.state.LoggedIn} color="primary" onClick={this.toggleRegisterSertModal}>
-                                        Registruoti sertifikatą
-                                    </Button>
-                                </NavItem>
-                                ' '
-                                <NavItem>
                                     <Button disabled={!this.state.LoggedIn} color="success" onClick={this.toggleRegisterAdModal}>
                                         Registruoti pacientą
                                     </Button>

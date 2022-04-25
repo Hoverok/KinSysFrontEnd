@@ -136,13 +136,11 @@ const Menu = (props) => {
     else
         return (
             <div className="container">
-                <div className="row col-12 justify-content-center">
-                </div>
                 <div className="row col-12">
                     <h3>Pacientai</h3>
                     <hr />
                 </div>
-                <div className="row col-12 justify-content-center">
+                <div className="row col-12">
                     <Media list>
                         {menu}
                     </Media>
