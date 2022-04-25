@@ -20,7 +20,7 @@ function RenderDish({ dish, putDish, deleteDish }) {
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
                 <div className="row">
-                    <div className="col">
+                    <div className="col-12">
                         <EditAdForm dish={dish} putDish={putDish} deleteDish={deleteDish} />
                         <div className="d-none d-sm-block">
                             <span className="badge badge-info">{dish.sessionActivity}</span>
@@ -33,10 +33,8 @@ function RenderDish({ dish, putDish, deleteDish }) {
                         <p>Adresas: {dish.address}</p>
                         <p>Tel. numeris:{dish.tel}</p>
                         <p>El. paštas: {dish.email}</p>
-
                         <h4>Lygos aprašymas:</h4>
                         <p>{dish.illnessDescription}</p>
-
                         <h4>Diagnozė:</h4>
                         <p>{dish.diagnosis}</p>
 
@@ -138,7 +136,7 @@ const DishDetail = (props) => {
                         <hr />
                     </div>
                 </div>
-                <div className="row justify-content-center">
+                <div className="row">
                     <RenderDish dish={props.dish} putDish={props.putDish} deleteDish={props.deleteDish} />
                 </div>
                 <hr />
