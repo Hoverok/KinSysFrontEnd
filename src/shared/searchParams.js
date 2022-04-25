@@ -1,4 +1,4 @@
 export const SearchParams = {
     name: '',
-    label: ''
+    sessionActivity: ''
 };

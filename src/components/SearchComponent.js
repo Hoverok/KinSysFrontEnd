@@ -23,7 +23,7 @@ class Search extends Component {
     }
 
     handleLabelChanged(event) {
-        SearchParams.label = event.target.value;
+        SearchParams.sessionActivity = event.target.value;
     }
 
 
@@ -36,14 +36,7 @@ class Search extends Component {
         return (
 
             <div className="container">
-                <div className="row">
-                    <Breadcrumb>
-                        <BreadcrumbItem><Link to='/home'>Pradinis</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>Treneriai</BreadcrumbItem>
-                    </Breadcrumb>
-                </div>
-
-                <div className="col-12 justify-content-center">
+                <div className="col-12 mt-2 justify-content-center">
                     <Form onSubmit={this.handleSubmit}>
                         <FormGroup row>
                             <div className="col-10">
@@ -58,19 +51,14 @@ class Search extends Component {
                         </FormGroup>
                         <FormGroup row>
                             <div className="col-2">
-                                <Label htmlFor="label">Trenerio specifikacija: </Label>
+                                <Label htmlFor="label">Sesijos statusas:</Label>
                             </div>
                             <div className="col-4">
                                 <select onChange={this.handleLabelChanged} >
                                     <option value=""></option>
-                                    <option value="Jėga">Jėga</option>
-                                    <option value="Ištvermė">Ištvermė</option>
-                                    <option value="H.I.I.T">H.I.I.T</option>
-                                    <option value="Crossfit">Crossfit</option>
-                                    <option value="Reabilitacija">Reabilitacija</option>
-                                    <option value="Svorio metimas">Svorio metimas</option>
-                                    <option value="Svorio priaugimas">Svorio priaugimas</option>
-                                    <option value="Kūno skulptūra">Kūno skulptūra</option>
+                                    <option value="Laukia">Laukia</option>
+                                    <option value="Aktyvus">Aktyvus</option>
+                                    <option value="Baigtas">Baigtas</option>
                                 </select>
                             </div>
                         </FormGroup>

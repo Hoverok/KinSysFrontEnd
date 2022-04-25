@@ -10,108 +10,88 @@ import { SearchParams } from '../shared/searchParams';
 function RenderMenuItem({ dish, onClick }) {
 
 
-    if (SearchParams.label === '' && SearchParams.name === '') {
+    if (SearchParams.sessionActivity === '' && SearchParams.name === '') {
         return (
 
             <Link to={`/menu/${dish.id}`} >
-                <div className="col-12 mt-5">
-                    <Media className="media border p-3">
-
-                        <div className="col-3">
-                            <Media left middle>
-                                <Media className="d-block mr-3 img-fluid img-fit" object src={baseUrl + dish.image} alt={dish.name} />
-                            </Media>
-                        </div>
-                        <div className="col-9">
+                <div className="col-12 mt-2">
+                    <Media className="media border p-2">
+                        <div>
                             <Media body>
-                                <Media heading>{dish.name} {dish.lastName}</Media>
+                                <Media heading>{dish.name}</Media>
+                                <Media heading>{dish.personalId}</Media>
                                 <div className="d-none d-sm-block">
-                                    <span className="badge badge-info">{dish.label}</span>
+                                    <span className="badge badge-info">{dish.sessionActivity}</span>
                                 </div>
-                                <p className="d-none d-sm-block">{dish.description}</p>
+                                <p className="d-none d-sm-block"><b>Diagnozė:</b> {dish.diagnosis}</p>
+                                <p className="d-none d-sm-block"><b>Lygos aprašymas:</b> {dish.illnessDescription}</p>
                             </Media>
                         </div>
-
                     </Media>
                 </div>
             </Link>
         );
-    } else if (SearchParams.name === '' && SearchParams.label === dish.label) {
+    } else if (SearchParams.name === '' && SearchParams.sessionActivity === dish.sessionActivity) {
         return (
 
             <Link to={`/menu/${dish.id}`} >
-                <div className="col-12 mt-5">
-                    <Media className="media border p-3">
-
-                        <div className="col-3">
-                            <Media left middle>
-                                <Media className="d-block mr-3 img-fluid img-fit" object src={baseUrl + dish.image} alt={dish.name} />
-                            </Media>
-                        </div>
-                        <div className="col-9">
+                <div className="col-12 mt-2">
+                    <Media className="media border p-2">
+                        <div>
                             <Media body>
                                 <Media heading>{dish.name}</Media>
+                                <Media heading>{dish.personalId}</Media>
                                 <div className="d-none d-sm-block">
-                                    <span className="badge badge-info">{dish.label}</span>
+                                    <span className="badge badge-info">{dish.sessionActivity}</span>
                                 </div>
-                                <p className="d-none d-sm-block">{dish.description}</p>
+                                <p className="d-none d-sm-block"><b>Diagnozė:</b> {dish.diagnosis}</p>
+                                <p className="d-none d-sm-block"><b>Lygos aprašymas:</b> {dish.illnessDescription}</p>
                             </Media>
                         </div>
-
                     </Media>
                 </div>
             </Link>
         );
     } 
-    else if (dish.name.includes(SearchParams.name) && SearchParams.label === dish.label) {
+    else if (dish.name.includes(SearchParams.name) && SearchParams.sessionActivity === dish.sessionActivity) {
         return (
 
             <Link to={`/menu/${dish.id}`} >
-                <div className="col-12 mt-5">
-                    <Media className="media border p-3">
-
-                        <div className="col-3">
-                            <Media left middle>
-                                <Media className="d-block mr-3 img-fluid img-fit" object src={baseUrl + dish.image} alt={dish.name} />
-                            </Media>
-                        </div>
-                        <div className="col-9">
+                <div className="col-12 mt-2">
+                    <Media className="media border p-2">
+                        <div>
                             <Media body>
                                 <Media heading>{dish.name}</Media>
+                                <Media heading>{dish.personalId}</Media>
                                 <div className="d-none d-sm-block">
-                                    <span className="badge badge-info">{dish.label}</span>
+                                    <span className="badge badge-info">{dish.sessionActivity}</span>
                                 </div>
-                                <p className="d-none d-sm-block">{dish.description}</p>
+                                <p className="d-none d-sm-block"><b>Diagnozė:</b> {dish.diagnosis}</p>
+                                <p className="d-none d-sm-block"><b>Lygos aprašymas:</b> {dish.illnessDescription}</p>
                             </Media>
                         </div>
-
                     </Media>
                 </div>
             </Link>
         );
     }
-    else if (dish.name.includes(SearchParams.name) && SearchParams.label === '') {
+    else if (dish.name.includes(SearchParams.name) && SearchParams.sessionActivity === '') {
         return (
 
             <Link to={`/menu/${dish.id}`} >
-                <div className="col-12 mt-5">
-                    <Media className="media border p-3">
-
-                        <div className="col-3">
-                            <Media left middle>
-                                <Media className="d-block mr-3 img-fluid img-fit" object src={baseUrl + dish.image} alt={dish.name} />
-                            </Media>
-                        </div>
-                        <div className="col-9">
+                <div className="col-12 mt-2">
+                    <Media className="media border p-2">
+                        <div>
                             <Media body>
                                 <Media heading>{dish.name}</Media>
+                                <Media heading>{dish.personalId}</Media>
                                 <div className="d-none d-sm-block">
-                                    <span className="badge badge-info">{dish.label}</span>
+                                    <span className="badge badge-info">{dish.sessionActivity}</span>
                                 </div>
-                                <p className="d-none d-sm-block">{dish.description}</p>
+                                <p className="d-none d-sm-block"><b>Diagnozė:</b> {dish.diagnosis}</p>
+                                <p className="d-none d-sm-block"><b>Lygos aprašymas:</b> {dish.illnessDescription}</p>
                             </Media>
                         </div>
-
                     </Media>
                 </div>
             </Link>
@@ -159,7 +139,7 @@ const Menu = (props) => {
                 <div className="row col-12 justify-content-center">
                 </div>
                 <div className="row col-12">
-                    <h3>Treneriai</h3>
+                    <h3>Pacientai</h3>
                     <hr />
                 </div>
                 <div className="row col-12 justify-content-center">
@@ -171,7 +151,6 @@ const Menu = (props) => {
 
             </div>
         );
-
 }
 
 
