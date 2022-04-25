@@ -53,20 +53,20 @@ export const addDish = (dish) => ({
 });
 
 //post pacientas
-export const postDish = (name, lastName, image, imagebig, tel, label, work, achievement, featured, description) => (dispatch) => {
+export const postDish = (sessionActivity, name, healthHistoryNr, personalId, dateOfBirth, gender, address, tel, email, illnessDescription, diagnosis) => (dispatch) => {
 
     const newDish = {
+        sessionActivity: sessionActivity,
         name: name,
-        lastName: lastName,
-        image: image,
-        imagebig: imagebig,
+        healthHistoryNr: healthHistoryNr,
+        personalId: personalId,
+        dateOfBirth: dateOfBirth,
+        gender: gender,
+        address: address,
         tel: tel,
-        label: label,
-        work: work,
-        achievement: achievement,
-        featured: featured,
-        description: description
-
+        email: email,
+        illnessDescription: illnessDescription,
+        diagnosis: diagnosis,
     };
     //newDish.date = new Date().toISOString();
 
@@ -95,7 +95,7 @@ export const postDish = (name, lastName, image, imagebig, tel, label, work, achi
         .then(response => dispatch(addDish(response)))
         .catch(error => {
             //console.log('Post trainer ', error.message);
-            alert('Skelbimas užregistruotas');
+            alert('Pacientas užregistruotas');
             //\nError: ' + error.message);
         });
 };

@@ -219,7 +219,9 @@ class Header extends Component {
                                     <div className="form-group row">
                                         <div className="col-6">
                                             <select onChange={this.handleLabelSessionChanged} >
-                                                <option value="Laukia">Pacientas laukia sesijos pradžios</option>
+                                                <option value=""></option>
+                                                <option value="Laukia">Laukia</option>
+                                                <option value="Aktyvus">Aktyvus</option>
                                             </select>
                                         </div>
                                     </div>
@@ -259,9 +261,10 @@ class Header extends Component {
                                     <div className="form-group row">
                                         <div className="col-6">
                                             <select onChange={this.handleLabelGenderChanged} >
-                                                <option value="male">Vyr.</option>
-                                                <option value="female">Mot.</option>
-                                                <option value="other">Kit.</option>
+                                                <option value=""></option>
+                                                <option value="Vyr.">Vyr.</option>
+                                                <option value="Mot.">Mot.</option>
+                                                <option value="Kit.">Kit.</option>
                                             </select>
                                         </div>
                                     </div>
@@ -292,14 +295,14 @@ class Header extends Component {
                                 <div className="form-group required col-sm-12">
                                     <label className="control-label" for="illnessDescription">Lygos aprašymas</label>
                                     <textarea className="form-control" id="illnessDescription" placeholder="Paciento lygos aprašymas"
-                                     name="address" rows="6" onChange={this.handleIllnessDescriptionChanged}></textarea>
+                                        name="address" rows="6" onChange={this.handleIllnessDescriptionChanged}></textarea>
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group required col-sm-12">
                                     <label className="control-label" for="diagnosis">Diagnozės</label>
                                     <textarea className="form-control" id="diagnosis" placeholder="Diagnozės"
-                                     name="address" rows="6" onChange={this.handleDiagnosisChanged}></textarea>
+                                        name="address" rows="6" onChange={this.handleDiagnosisChanged}></textarea>
                                 </div>
                             </div>
                             <div className="form-row">
